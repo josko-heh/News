@@ -1,0 +1,1 @@
+Jednostavna web stranica za PWA kolegij.
