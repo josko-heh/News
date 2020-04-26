@@ -1,1 +1,1 @@
-Jednostavna web stranica za PWA kolegij.
+Simple wep page. Part of "Web pages programming" course.
