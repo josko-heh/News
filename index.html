@@ -2,9 +2,57 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Vijesti</title>
+    <title>BBC</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <label for=""></label> 
+<div id="page-wrapper">
+    <header>
+        <div class="wrapper">
+            <h1>BBC</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><span>Home</span></a></li>
+                    <li><a href="#"><span>News</span></a></li>
+                    <li><a href="#"><span>Sport</span></a></li>
+                    <li><a href="#"><span>Administracija</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="wrapper">
+        <span>Welcome to BBC.com</span>
+        <time><?php echo date("l, j M")?></time>
+        <section>
+            <div class="line-vert-red"></div>
+            <h3>News</h3>
+            <div class="row">
+                <article class="col">biscuit</article>
+                <article class="col">snubs</article>
+                <article class="col">window</article>
+            </div>
+        </section>
+        <section>
+            <div class="line-vert-yell"></div>
+            <h3>Sport</h3>
+            <div class="row">
+                <article class="col">alonso</article>
+                <article class="col">sharapova</article>
+                <article class="col">summer</article>
+            </div>
+        </section>
+    </main>    
+    <footer>
+        <div class="line-hr" class="wrapper"></div>
+        <div class="wrapper">
+            <b>Copyright c 2019 BBC.</b> 
+            <span>
+                The BBC is not responsible for the content of external sites. 
+                <a href="#">Read about our approach...</a>
+            </span>
+        </div>
+    </footer>
+</div>
 </body>
 </html>
