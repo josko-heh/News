@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AMS</title>
+    <link rel="icon" href="favicon.png" type="image/png" sizes="16x16 32x32">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="newArticle.css">
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <h1><a id="BBClink" href="index.html"><i class="fas fa-globe-europe"></i>AMS</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-running"></i><span>Sport</span></a></li>
+                    <li><a href="#"><i class="fas fa-money-bill-alt"></i><span>Show</span></a></li>
+                    <li><a href="#"><i class="fas fa-flask"></i><span>Science</span></a></li>
+                    <li><a href="newArticle.html"><i class="fas fa-file-alt"></i><span>New article</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="wrapper">
+            <h2>Enter new article</h2>
+
+            <form action="script.php" method="post">
+                <label for="headline">Headline</label>
+                <input type="text" name="headline" id="headline" class="form-control" maxlength="50" minlength="3" aria-describedby="basic-addon1" style="max-width: 500px;" autofocus required>
+
+                <label for="summary">Brief summary</label>
+                <textarea name="summary" id="summary" class="form-control" rows="2" maxlength="200" minlength="3" aria-describedby="basic-addon1" required></textarea>
+
+                <label for="story">Story</label>
+                <textarea name="story" id="story" class="form-control" rows="5" maxlength="8000" aria-describedby="basic-addon1" required></textarea>
+
+                <div class="custom-file">
+                    <input type="image" class="custom-file-input" id="inputFile" alt="Article image">
+                    <label class="custom-file-label" for="inputFile">Choose image</label>
+                </div>
+
+                <label for="category">Choose category</label>
+                <select class="custom-select" name="category" id="category" required>
+                    <option value="" selected disabled>Choose...</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Show">Show</option>
+                    <option value="Life">Life</option>
+                    <option value="Science">Science</option>
+                </select>
+
+                <input type="checkbox" value="" id="showCheckbox">
+                <label class="form-check-label" for="showCheckbox">Show in news</label>
+                <br>
+                <input class="btn btn-primary" name="reset" type="reset" value="Reset">
+                <input class="btn btn-primary" name="submit" type="submit" value="Submit">
+            </form>
+        </div>
+    </main>    
+    <footer>
+        <div class="line-hr wrapper"></div>
+        <div class="text wrapper">
+            <b>Copyright © 2020 AMS.</b><!-- echo year-->
+            <span>
+                The AMS is not responsible for the content of external sites.
+                <a href="#">Our approach...</a>
+            </span>
+        </div>
+    </footer>
+</body>
+</html>
