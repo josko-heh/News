@@ -1,4 +1,6 @@
-body{ background-color: black;
+/*general header and footer styling for all pages*/
+body{
+    background-color: black;
 }
 #page-wrapper{
     width: 85%;
@@ -12,48 +14,105 @@ body{ background-color: black;
 /*-------header----------------------------------*/
 header{ 
     width: 100%;
+    height: 60px;
     background-color: black;
 }
+/* -------------links----------------- */
+#BBClink{
+    padding: 0px 12px 5px 8px;
+    color: #1687ff;
+}
+#BBClink:hover{
+    opacity: 1;
+    text-shadow: 2px 2px 2px rgb(216, 99, 3);
+    text-decoration: none;
+}
+
+a:link, a:visited, a:active{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    opacity: 0.6;
+    color: white;
+    text-decoration: none;
+}
+
+nav a {
+    display: inline-block;
+    width: 100%;
+    padding: 22px 0 14px 0;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+nav a>i, nav a>span{
+    position: relative;
+    bottom: 4px;
+}
+
 h1{ 
     display: inline-block;
-    color: white; 
+    float: left;
+    position: relative;
+    top: 5px;
+    max-width: 16%;
+    height: 100%;
+    margin: 0 0 0 0;
+    text-align: center;
+    color: white;
 }
-h2,h3{ 
-    display: inline-block; }
-nav{ 
-    /*width: ;*/
-    display: inline-block;
-}
-ul{ 
-    list-style-type: none; }
-li{ 
-    display: inline-block; }
 
-/*-----------main---------------------------------*/
-main{
-    background-color: white;}
+nav{ 
+    display: inline-block;
+    width: 67%;
+    height: 100%;
+}
+ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}   
+li {
+    display: inline-block;
+    /*float: left;*/
+    width: 18%;
+    height: 100%;
+    border-right: 2px solid rgb(49, 159, 179);
+}
+nav li:first-of-type{
+    border-left: 2px solid rgb(49, 159, 179);
+}
+nav li:last-of-type{
+    float: right;
+    border-left: 2px solid rgb(49, 159, 179);
+    background-color: rgb(31, 31, 31);
+}
+nav i{
+    margin-right: 5px;
+}
 
 /*-----------footer---------------------------------*/
 footer{ 
+    position: relative;
+    bottom: 90px;
     width: 100%;
-    background-color: brown;
+    height: 75px;
+    background-color: rgb(56, 60, 77);
+    color: whitesmoke;
+}
+footer .text{
+    position: relative;
+    top: 35px;
+}
+footer a:link, footer a:visited, footer a:active{
+    color: #8eb5ff;
 }
 
-/*----------------------------------------------------*/
 .line-hr{
-    width: 100%;
-    height: 2px;
+    position: relative;
+    top: 15px;
+    height: 2.5px;
     background-color: white;
-}
-.line-vert-yell{
-    width: 5px;
-    height: 1em;
-    background-color: yellow;
-    display: inline-block;
-}
-.line-vert-red{
-    width: 5px;
-    height: 1em;
-    background-color: red;
-    display: inline-block;
-}
+}/*----------------------------------------------------*/

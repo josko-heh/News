@@ -1,58 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BBC</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>AMS</title>
+    <link rel="icon" href="favicon.png" type="image/png" sizes="16x16 32x32">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="page-wrapper">
     <header>
         <div class="wrapper">
-            <h1>BBC</h1>
+            <h1><a id="BBClink" href="index.html"><i class="fas fa-globe-europe"></i>AMS</a></h1>
             <nav>
                 <ul>
-                    <li><a href="index.html"><span>Home</span></a></li>
-                    <li><a href="#"><span>News</span></a></li>
-                    <li><a href="#"><span>Sport</span></a></li>
-                    <li><a href="#"><span>Administracija</span></a></li>
+                    <li><a href="#"><i class="fas fa-running"></i><span>Sport</span></a></li>
+                    <li><a href="#"><i class="fas fa-money-bill-alt"></i><span>Show</span></a></li>
+                    <li><a href="#"><i class="fas fa-flask"></i><span>Science</span></a></li>
+                    <li><a href="newArticle.html"><i class="fas fa-file-alt"></i><span>New article</span></a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <main class="wrapper">
-        <span>Welcome to BBC.com</span>
-        <time><?php echo date("l, j M")?></time>
-        <section>
-            <div class="line-vert-red"></div>
-            <h3>News</h3>
-            <div class="row">
-                <article class="col">biscuit</article>
-                <article class="col">snubs</article>
-                <article class="col">window</article>
-            </div>
-        </section>
-        <section>
-            <div class="line-vert-yell"></div>
-            <h3>Sport</h3>
-            <div class="row">
-                <article class="col">alonso</article>
-                <article class="col">sharapova</article>
-                <article class="col">summer</article>
-            </div>
-        </section>
-    </main>    
-    <footer>
-        <div class="line-hr" class="wrapper"></div>
+    <main>
         <div class="wrapper">
-            <b>Copyright c 2019 BBC.</b> 
+            <div class="animated">
+                <span>Welcome to AMS.com</span>
+            </div>
+            <time><?php echo date("l, j M")?></time>
+            <section>
+                <div class="line-vert-red"></div>
+                <h3>News</h3>
+                <div class="row">
+                    <article class="col">biscuit</article>
+                    <article class="col">snubs</article>
+                    <article class="col">window</article>
+                </div>
+            </section>
+            <section>
+                <div class="line-vert-yell"></div>
+                <h3>Sport</h3>
+                <div class="row">
+                    <article class="col">alonso</article>
+                    <article class="col">sharapova</article>
+                    <article class="col">summer</article>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="line-hr wrapper"></div>
+        <div class="text wrapper">
+            <b>Copyright © 2020 AMS.</b> <!-- echo year-->
             <span>
-                The BBC is not responsible for the content of external sites. 
-                <a href="#">Read about our approach...</a>
+                The AMS is fictional news site. 
+                <a href="#">Our approach...</a>
             </span>
         </div>
     </footer>
-</div>
 </body>
 </html>
