@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>AMS</title>
+
     <link rel="icon" href="favicon.png" type="image/png" sizes="16x16 32x32">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="newArticle.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -27,9 +29,9 @@
         <div class="wrapper">
             <h2>Enter new article</h2>
 
-            <form action="script.php" method="post">
+            <form action="article.php" method="post" enctype="multipart/form-data">
                 <label for="headline">Headline</label>
-                <input type="text" name="headline" id="headline" class="form-control" maxlength="50" minlength="3" aria-describedby="basic-addon1" style="max-width: 500px;" autofocus required>
+                <input type="text" name="headline" id="headline" class="form-control" maxlength="50" minlength="3" aria-describedby="basic-addon1" autofocus required>
 
                 <label for="summary">Brief summary</label>
                 <textarea name="summary" id="summary" class="form-control" rows="2" maxlength="200" minlength="3" aria-describedby="basic-addon1" required></textarea>
@@ -38,8 +40,8 @@
                 <textarea name="story" id="story" class="form-control" rows="5" maxlength="8000" aria-describedby="basic-addon1" required></textarea>
 
                 <div class="custom-file">
-                    <input type="image" class="custom-file-input" id="inputFile" alt="Article image">
-                    <label class="custom-file-label" for="inputFile">Choose image</label>
+                    <input type="file" name="inputImage" id="inputImage" class="custom-file-input" accept="image/*" alt="Article image">
+                    <label class="custom-file-label" for="inputImage">Choose image</label>
                 </div>
 
                 <label for="category">Choose category</label>
@@ -50,12 +52,14 @@
                     <option value="Life">Life</option>
                     <option value="Science">Science</option>
                 </select>
-
-                <input type="checkbox" value="" id="showCheckbox">
-                <label class="form-check-label" for="showCheckbox">Show in news</label>
+        <!-----------insert toolbar explaining checkbox -->
+                <label class="form-check-label" for="checkboxShow" data-toggle="tooltip" data-placement="right" title="Save article in database, but don't show it in news.">
+                    <input type="checkbox" value="" id="checkboxShow">
+                    Archive
+                </label>
                 <br>
-                <input class="btn btn-primary" name="reset" type="reset" value="Reset">
-                <input class="btn btn-primary" name="submit" type="submit" value="Submit">
+                <input type="reset" name="reset" value="Reset" class="btn btn-primary">
+                <input type="submit" name="submit" value="Submit" class="btn btn-primary" type="submit">
             </form>
         </div>
     </main>    
@@ -64,7 +68,7 @@
         <div class="text wrapper">
             <b>Copyright © 2020 AMS.</b><!-- echo year-->
             <span>
-                The AMS is not responsible for the content of external sites.
+                The AMS is fictional news site. 
                 <a href="#">Our approach...</a>
             </span>
         </div>

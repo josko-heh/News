@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="article.css">
+    <link rel="stylesheet" href="style.css">
+
+    <?php include "script.php"?>
 </head>
 <body>
     <header>
@@ -25,21 +28,25 @@
     <div class="color" id="blue"></div> <!-- if sport than orange-->
     <main>
         <div class="wrapper">
-            <h2>SPORT</h2>
+            <h2><?php echo strtoupper($category)?></h2>
             <section>
-                <h3>Lorem ipsum dolor sit amet, consectetuer adipiscid</h3>
-                <img src="" alt="">
-                <span>ex formula 1</span>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa reprehenderit assumenda explicabo error, earum esse expedita, quae blanditiis repellat quidem tempora. Placeat cumque aliquid totam perferendis maxime, excepturi nemo ipsa assumenda aperiam esse velit necessitatibus hic, repudiandae facere nihil officia soluta accusantium adipisci, explicabo deserunt dolor dicta delectus culpa. Enim quisquam facilis fugiat ut recusandae minima quo. Autem quam, id dolores rem qui nisi ut repellat voluptatum sed quasi quidem eos ullam, culpa aperiam exercitationem neque optio cupiditate ipsa sequi! Amet ab ratione libero rerum est distinctio perspiciatis veritatis fuga adipisci? Exercitationem vitae quos, nulla ipsum quod mollitia voluptate maxime.</p>
+                <h3><?php echo $headline?></h3>
+                <?php
+                if($isUploaded){
+                    if(!empty($errorMsg)){echo $errorMsg;}
+                    else {echo '<img src="'.$img. '" alt="'.$headline.'">';}
+                }?>
+                <summary><?php echo $summary?></summary>
+                <p><?php echo $story?></p>
             </section>
         </div>
     </main>    
     <footer>
         <div class="line-hr wrapper"></div>
         <div class="text wrapper">
-            <b>Copyright © 2020 AMS.</b>  <!--echo year -->
+            <b>Copyright © <?php echo date("Y")?> AMS.</b>
             <span>
-                The AMS is not responsible for the content of external sites. 
+                The AMS is fictional news site. 
                 <a href="#">Our approach...</a>
             </span>
         </div>
