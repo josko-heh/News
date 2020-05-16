@@ -1,1 +1,1 @@
-Simple wep page. Part of "Web pages programming" course.
+Simple news website. Part of "Web pages programming" course.

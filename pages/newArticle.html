@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>AMS</title>
 
-    <link rel="icon" href="favicon.png" type="image/png" sizes="16x16 32x32">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="icon" href="../favicon.png" type="image/png" sizes="16x16 32x32">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="newArticle.css">
     <link rel="stylesheet" href="style.css">
@@ -14,12 +13,12 @@
 <body>
     <header>
         <div class="wrapper">
-            <h1><a id="BBClink" href="index.html"><i class="fas fa-globe-europe"></i>AMS</a></h1>
+            <h1><a id="BBClink" href="index.php"><i class="fas fa-globe-europe"></i>AMS</a></h1>
             <nav>
                 <ul>
-                    <li><a href="#"><i class="fas fa-running"></i><span>Sport</span></a></li>
-                    <li><a href="#"><i class="fas fa-money-bill-alt"></i><span>Show</span></a></li>
-                    <li><a href="#"><i class="fas fa-flask"></i><span>Science</span></a></li>
+                    <li><a href="category.php?name=Sport"><i class="fas fa-running"></i><span>Sport</span></a></li>
+                    <li><a href="category.php?name=Show"><i class="fas fa-money-bill-alt"></i><span>Show</span></a></li>
+                    <li><a href="category.php?name=Science"><i class="fas fa-flask"></i><span>Science</span></a></li>
                     <li><a href="newArticle.html"><i class="fas fa-file-alt"></i><span>New article</span></a></li>
                 </ul>
             </nav>
@@ -29,7 +28,7 @@
         <div class="wrapper">
             <h2>Enter new article</h2>
 
-            <form action="article.php" method="post" enctype="multipart/form-data">
+            <form action="../database/insert.php" method="post" enctype="multipart/form-data">
                 <label for="headline">Headline</label>
                 <input type="text" name="headline" id="headline" class="form-control" maxlength="50" minlength="3" aria-describedby="basic-addon1" autofocus required>
 
@@ -49,12 +48,10 @@
                     <option value="" selected disabled>Choose...</option>
                     <option value="Sport">Sport</option>
                     <option value="Show">Show</option>
-                    <option value="Life">Life</option>
                     <option value="Science">Science</option>
                 </select>
-        <!-----------insert toolbar explaining checkbox -->
-                <label class="form-check-label" for="checkboxShow" data-toggle="tooltip" data-placement="right" title="Save article in database, but don't show it in news.">
-                    <input type="checkbox" value="" id="checkboxShow">
+                <label class="form-check-label" for="checkboxArchive" data-toggle="tooltip" data-placement="right" title="Save article in database, but don't show it in news.">
+                    <input type="checkbox" name="checkboxArchive" id="checkboxArchive">
                     Archive
                 </label>
                 <br>
