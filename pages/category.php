@@ -9,55 +9,66 @@
     <link rel="stylesheet" href="category.css">
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
     <?php
-include '../database/database.php';
-$categoryName = $_GET['name'];
+    include '../data/database.php';
+    $categoryName = $_GET['name'];
 
-function displayArticles($dbc, $categoryName){
-    $showArticles = 2; //number of articles per row
+    /**
+     * Prints out articles from $categoryName category.
+     */
+    function displayArticles($dbc, $categoryName){
+        $showArticles = 2; //number of articles per row
 
-    function tab($num){
-        $tabs = "";
-        for ($i = 0; $i < $num; $i++) {
-            $tabs .= "\t";
+        function tab($num){
+            $tabs = "";
+            for ($i = 0; $i < $num; $i++) {
+                $tabs .= "\t";
+            }
+            return $tabs;
         }
-        return $tabs;
+
+        $articles = getArticles($dbc, $categoryName, 20);
+
+        $articleCounter = 0;
+        for ($i=0; $i < mysqli_num_rows($articles); $i++) {
+            
+            if($articleCounter == 0){
+                echo
+                    tab(3) . '<div class="row">' . "\r\n";
+            }
+
+            if($article = mysqli_fetch_array($articles)){   //if there are articles left in $articles
+                echo
+                    tab(4) . '<article class="col">' . "\r\n" .
+                        tab(5) . '<a href="article.php?id=' . $article['id'] . '">' . "\r\n" .
+                            tab(6) . '<div>' . "\r\n" .
+                                tab(7) . '<div>' . "\r\n" .
+                                tab(8) . '<img src="' . $article['image'] . '" class="initial">' . "\r\n" .
+                                tab(7) . '</div>' . "\r\n" .
+                            tab(6) . '</div>' . "\r\n" .
+                            tab(6) . '<h4>' . $article['headline'] . '</h4>' . "\r\n" .
+                            tab(6) . '<p>' . $article['summary'] . '</p>' . "\r\n" .
+                        tab(5) . '</a>' . "\r\n" .
+                    tab(4) . '</article>' . "\r\n";
+                    
+                $articleCounter++;
+            }
+
+            if(mysqli_num_rows($articles) < $showArticles){
+                if ($articleCounter == mysqli_num_rows($articles)) {
+                    echo tab(3) . '</div>' . "\r\n";
+                    break;
+                }
+            }else{
+                if ($articleCounter == $showArticles) {
+                    echo tab(3) . '</div>' . "\r\n";
+                    $articleCounter = 0;
+                }
+            }
+        }
     }
-
-    $articles = getArticles($dbc, $categoryName, 20);
-
-    $articleCounter = 0;
-    for ($i=0; $i < mysqli_num_rows($articles); $i++) {
-        
-        if($articleCounter == 0){
-            echo
-                tab(4) . '<div class="row">' . "\r\n";
-        }
-
-        if($article = mysqli_fetch_array($articles)){   //if there are articles left in $articles
-            echo
-                tab(5) . '<article class="col">' . "\r\n" .
-                    tab(6) . '<a href="article.php?id=' . $article['id'] . '">' . "\r\n" .
-                        tab(7) . '<div>' . "\r\n" .
-                            tab(8) . '<div>' . "\r\n" .
-                                tab(9) . '<img src="' . $article['image'] . '">' . "\r\n" .
-                            tab(8) . '</div>' . "\r\n" .
-                        tab(7) . '</div>' . "\r\n" .
-                        tab(7) . '<h4>' . $article['headline'] . '</h4>' . "\r\n" .
-                        tab(7) . '<p>' . $article['summary'] . '</p>' . "\r\n" .
-                    tab(6) . '</a>' . "\r\n" .
-                tab(5) . '</article>' . "\r\n";
-                
-            $articleCounter++;
-        }
-
-        if ($articleCounter == $showArticles) {
-            echo
-                tab(4) . '</div>' . "\r\n";
-                $articleCounter = 0;
-        }
-    }
-}
     ?>
 </head>
 <body>
@@ -69,6 +80,8 @@ function displayArticles($dbc, $categoryName){
                     <li><a href="category.php?name=Sport"><i class="fas fa-running"></i><span>Sport</span></a></li>
                     <li><a href="category.php?name=Show"><i class="fas fa-money-bill-alt"></i><span>Show</span></a></li>
                     <li><a href="category.php?name=Science"><i class="fas fa-flask"></i><span>Science</span></a></li>
+                    <li><a href="administration.php"><i class="fas fa-file-alt"></i><span>Admin</span></a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-in-alt"></i><span>Sign in</span></a></li>
                     <li><a href="newArticle.html"><i class="fas fa-file-alt"></i><span>New article</span></a></li>
                 </ul>
             </nav>
@@ -77,7 +90,7 @@ function displayArticles($dbc, $categoryName){
     <div class="color" id="blue"></div>
     <main>
         <div class="wrapper">
-            <h2><?php echo strtoupper($categoryName)?></h2>                <!-- set name GET[] $categoryName-->
+            <h2><?php echo strtoupper($categoryName)?></h2>
             <?php displayArticles($dbc, $categoryName) ?>
         </div>
     </main>    
@@ -92,8 +105,8 @@ function displayArticles($dbc, $categoryName){
         </div>
     </footer>
 
-    <script type="text/javascript">
-    {
+    <script>
+    $(window).on("load", function() {
         let j = 0;
         let row = null;
         while(row = document.querySelector("main div[class='row']:nth-of-type("+(j+1)+")")){
@@ -102,13 +115,15 @@ function displayArticles($dbc, $categoryName){
             let img = null;
             while (img = row.querySelector("article:nth-of-type("+(i+1)+") img")) {
                 if(img.naturalWidth >= img.naturalHeight){
-                    img.classList.add("horizontal")
+                    img.classList.remove("initial");
+                    img.classList.add("horizontal");
 
                     maxWidth = 200 * img.naturalWidth / img.naturalHeight;
                     maxWidth = maxWidth.toFixed(2);
                     img.style.maxWidth = maxWidth.toString() + "px";
                 }else{
-                    img.classList.add("vertical")
+                    img.classList.remove("initial");
+                    img.classList.add("vertical");
                 }
 
                 i++;
@@ -116,7 +131,8 @@ function displayArticles($dbc, $categoryName){
 
             j++;
         }
-    }
+    });
     </script>
+    <?php mysqli_close($dbc);?>
 </body>
 </html>

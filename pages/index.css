@@ -9,7 +9,7 @@ header{
         top: 0.6rem;
     }/*original, bootstrap css h1{size:2.5rem}*/
 }
-@media (max-width: 974px){/*if scrollbar appears, width needs to be changed to 991px*/
+@media (max-width: 1289px){
     nav li:last-of-type a{
     padding: 12px 0 0 0;
     }
@@ -97,17 +97,6 @@ article > a > div > div{
     height: min-content;
     margin: auto;
     overflow: hidden;
-}
-article img[class="horizontal"]{
-    display: block;
-    width: 100%;    
-    max-height: 200px;
-    margin: auto;
-}
-article img[class="vertical"]{
-    display: block;
-    height: 200px;
-    margin: auto;
 }
 
 article p{

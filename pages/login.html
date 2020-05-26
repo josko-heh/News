@@ -3,42 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>AMS</title>
+
     <link rel="icon" href="../favicon.png" type="image/png" sizes="16x16 32x32">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="article.css">
+    <link rel="stylesheet" href="form.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <style> main{height: 877px;}</style>
 
-    <?php
-    include '../data/database.php';
-
-    $articleId = $_GET['id'];
-
-    $query =   "SELECT articles.*, categories.name AS cName
-                FROM articles
-                    JOIN categories ON articles.categoryId = categories.id
-                WHERE articles.id = ?";
-
-    $stmt = mysqli_stmt_init($dbc);
-    mysqli_stmt_prepare($stmt, $query);
-    mysqli_stmt_bind_param($stmt, 'i', $articleId);
-    mysqli_stmt_execute($stmt);
-    if(!($result = mysqli_stmt_get_result($stmt))){
-        die("select article id query error");
-    }else {
-        $row = mysqli_fetch_array($result);
-
-        $headline = $row['headline'];
-        $summary = $row['summary'];
-        $story = $row['story'];
-        $img = $row['image'];
-        $categoryName = $row['cName'];
-    }
-
-    ?>
 </head>
 <body>
     <header>
@@ -56,24 +30,36 @@
             </nav>
         </div>
     </header>
-    <div class="color" id="blue"></div>
     <main>
         <div class="wrapper">
-            <h2><?php echo strtoupper($categoryName)?></h2>
-            <section>
-                <h3><?php echo $headline?></h3>
-                <?php
-                    if(!is_null($img)){ echo '<img src='.$img. ' alt="'.$headline.'">'; }
-                ?>
-                <summary><?php echo $summary ?></summary>
-                <p><?php echo $story?></p>
-            </section>
+            <h2>Login</h2>
+
+            <form>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" class="form-control" aria-describedby="basic-addon1" >
+                <div id="noUsernameAlert" class="alert alert-primary collapse" role="alert">
+                    Username doesn't exist!
+                    <a href="registration.html"> Register here.</a>
+                </div>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" aria-describedby="basic-addon1" >
+                <div id="wrongPasswordAlert" class="alert alert-primary collapse" role="alert">
+                    Wrong password!
+                </div>
+
+                <br>
+                <input type="button" name="submit" value="Submit" class="btn btn-primary">
+            </form>
+            <div id="loginAlert" class="alert alert-success collapse" role="alert"></div>
+            <br>
+            <div>Don't have an account? <a href="registration.html">Register here.</a></div>
         </div>
     </main>    
     <footer>
         <div class="line-hr wrapper"></div>
         <div class="text wrapper">
-            <b>Copyright © <?php echo date("Y")?> AMS.</b>
+            <b>Copyright © 2020 AMS.</b>
             <span>
                 The AMS is fictional news site. 
                 <a href="#">Our approach...</a>
@@ -82,6 +68,6 @@
     </footer>
 
     <script src="setMainHeight.js"></script>
-    <?php mysqli_close($dbc)?>
+    <script src="../data/validateLogin.js"></script>
 </body>
 </html>

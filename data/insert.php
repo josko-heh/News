@@ -1,7 +1,6 @@
 <?php
 //--------------------get form data------------
 if(isset($_POST['submit'])){
-    $errorMsg = "";
 
     $headline = $_POST['headline'];
     $summary = $_POST['summary'];
@@ -16,7 +15,8 @@ if(isset($_POST['submit'])){
         else{                         -move_uploaded_file will replace old file*/
             if (move_uploaded_file($_FILES['inputImage']['tmp_name'], $img)) {} 
             else {
-                $errorMsg = "Sorry, there was an error uploading your file.";
+                mysqli_close($dbc);
+                die("Sorry, there was an error uploading your file.");
             }
         /*}*/
     }else{ 
@@ -32,11 +32,11 @@ if(isset($_POST['submit'])){
     date_default_timezone_set('Europe/Zagreb');
 
     //---prepare $img for use in query---
-    if(is_null($img)){
-        $img = "null";  //if null, inserts null
+    /*if(is_null($img)){
+        $img = "null";  //inserts null
     }else{
-        $img ='"' . $img. '"';  //if not null, adds '' for use in INSERT...VALUES()
-    }
+        $img ='"' . $img. '"';  //adds '' for use in INSERT...VALUES()
+    }*/
 
     //-----set categoryId------
     $categoryId = NULL;
@@ -61,21 +61,21 @@ if(isset($_POST['submit'])){
 
     //------set isArchived------
     if(isset($_POST['checkboxArchive'])){
-        $isArchived = "true";
-    }else { $isArchived = "false"; }
+        $isArchived = 1;
+    }else { $isArchived = 0; }
 
     $dateTime = date('Y-m-d H:i:s');
 
 
-    $query = "INSERT INTO articles (headline, summary, story, image, categoryId, isArchived, dateTime) 
-            VALUES('$headline', '$summary', '$story', $img, $categoryId, $isArchived, '$dateTime')";
-    $result = mysqli_query($dbc, $query);
-    
-    if($result == false){
-        //mysqli_close($dbc);
-        die("insert article query error" . mysqli_error($dbc));
-    }
+    $query = "INSERT INTO articles (headline, summary, story, image, categoryId, isArchived, dateTime) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
+    $stmt = mysqli_stmt_init($dbc);
+
+    mysqli_stmt_prepare($stmt, $query);
+    mysqli_stmt_bind_param($stmt, 'ssssiis', $headline, $summary, $story, $img, $categoryId, $isArchived, $dateTime);
+    if(!mysqli_stmt_execute($stmt)){
+        die("insert article query error");
+    }
 //-------get id from stored article and open it in new page---------
     $query = "SELECT id FROM articles
               ORDER BY dateTime DESC

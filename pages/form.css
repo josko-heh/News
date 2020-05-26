@@ -12,17 +12,24 @@
 
 /*-----------main---------------------------------*/
 main{
-    padding-top: 20px;
+    padding-top: 25px;
     padding-bottom: 160px;
     background-color: white;
 }
 h2{
     text-align: center;
 }
-
 form{
     max-width: 820px;
 }
+
+.alert{
+    position: relative;
+    bottom: 10px;
+    width: fit-content;
+}
+
+/*newArticle.html*/
 #headline{
     max-width: 500px;
 }
@@ -34,4 +41,15 @@ form{
 }
 #checkboxArchive{
     margin: 20px 0 40px 0;
+}
+
+/*registration.php*/
+#name, #surname, #username, #password, #passwordRep{
+    max-width: 325px;
+    margin-bottom: 22px;
+}
+#userSavedAlert, #loginAlert{
+    position: relative;
+    left: 180px;
+    bottom: 44px;
 }
