@@ -61,8 +61,8 @@ if(isset($_POST['submit'])){
 
     //------set isArchived------
     if(isset($_POST['checkboxArchive'])){
-        $isArchived = 1;
-    }else { $isArchived = 0; }
+        $isArchived = true;
+    }else { $isArchived = false; }
 
     $dateTime = date('Y-m-d H:i:s');
 

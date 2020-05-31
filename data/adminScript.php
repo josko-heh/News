@@ -6,8 +6,8 @@ if(isset($_POST['deletebtn'])) {
 else if(isset($_POST['contentbtn'])){
     //------set isArchived------
     if(isset($_POST['checkboxArchive'])){
-        $isArchived = "true";
-    }else { $isArchived = "false"; }
+        $isArchived = true;
+    }else { $isArchived = false; }
     
     changeArticle($dbc, $_GET['id'], $_POST['headline'], $_POST['summary'], $_POST['story'], $_POST['category'], $isArchived);
 }

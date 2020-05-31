@@ -12,7 +12,7 @@
 
 /*-----------main---------------------------------*/
 main{
-    min-height: 780px;
+    /*min-height: 780px;*/
     padding-top: 25px;
     padding-bottom: 150px;
     background-color: white;
@@ -37,7 +37,7 @@ h3{
 }
 img{
     float: right;
-    margin: 0 8vw 20px 20px;
+    margin: 0 8vw 20px 45px;
     max-height: 50vh;
     max-width: 92%; /*100-8(margin)*/
 }
