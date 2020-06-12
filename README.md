@@ -10,7 +10,9 @@ User needs to be changed manually to admin in DB (set permissionId to 1).
 ### My database:<br/>
 ![DB schema](https://github.com/josko-heh/news/blob/master/db_schema.png?raw=true)<br/>
 <br/>
--- Database: `news`
+-- Database: `news`<br/>
+CREATE DATABASE IF NOT EXISTS `news` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `news`;<br/>
 
 -- Table structure for table `articles`<br/>
 CREATE TABLE `articles` (<br/>
