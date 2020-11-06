@@ -1,5 +1,4 @@
 ## Simple news website.
-online: http://amsnews.eu5.org/pages/index.php <br/>
 
 For site to work as intended you need to set up database and modify data/config.php file.
 Also, there should be images folder that article images are stored into. From insert.php: `$target_dir = "../images/";`
